@@ -57,6 +57,7 @@ end
 
 group :development do
   gem 'erb_lint', require: false
+  gem 'i18n_generators'
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
@@ -69,3 +70,5 @@ group :test do
 end
 
 gem 'carrierwave'
+
+gem 'kaminari'
