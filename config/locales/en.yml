@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  title: "Title"
+  memo: "Memo"
+  author: "Author"
+  picture: "Picture"
