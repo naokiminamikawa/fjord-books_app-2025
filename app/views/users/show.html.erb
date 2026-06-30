@@ -1,12 +1,12 @@
-<h1><%= t('.title', default: 'User Detail') %></h1>
+<h1><%= t('.title') %></h1>
 
 <div>
-  <label>ID</label><br>
+  <label><%= t('.id') %></label><br>
   <%= text_field_tag nil,
                      @user.id,
                      readonly: true,
                      size: 80,
-                     autocomplete: "off" %>
+                     autocomplete: 'off' %>
 </div>
 
 <br>
@@ -17,7 +17,7 @@
                      @user.email,
                      readonly: true,
                      size: 80,
-                     autocomplete: "off" %>
+                     autocomplete: 'off' %>
 </div>
 
 <br>
@@ -28,7 +28,7 @@
                      @user.postal_code,
                      readonly: true,
                      size: 80,
-                     autocomplete: "off" %>
+                     autocomplete: 'off' %>
 </div>
 
 <br>
@@ -39,7 +39,7 @@
                      @user.address,
                      readonly: true,
                      size: 80,
-                     autocomplete: "off" %>
+                     autocomplete: 'off' %>
 </div>
 
 <br>
@@ -51,10 +51,9 @@
                     readonly: true,
                     rows: 10,
                     cols: 80,
-                    autocomplete: "off" %>
+                    autocomplete: 'off' %>
 </div>
 
 <br>
 
-<%= link_to t('.back_to_list', default: 'Back to List'),
-            users_path %>
+<%= link_to t('.back_to_list'), users_path %>

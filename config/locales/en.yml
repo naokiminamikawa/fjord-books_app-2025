@@ -10,11 +10,6 @@ en:
     models:
       user: User
 
-    users:
-      show:
-        title: User Detail
-        back_to_list: Back to List
-
     attributes:
       user:
         email: Email
@@ -25,6 +20,17 @@ en:
         postal_code: Postal Code
         address: Address
         introduction: Self Introduction
+
+  users:
+    show:
+      title: User Detail
+      id: ID
+      back_to_list: Back to List
+
+  common:
+    logged_in_as: Logged in as
+    edit_profile: Edit profile
+    logout: Logout
 
   date:
     abbr_day_names:

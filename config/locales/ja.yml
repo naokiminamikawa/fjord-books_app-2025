@@ -10,11 +10,6 @@ ja:
     models:
       user: ユーザー
 
-    users:
-      show:
-        title: ユーザー詳細
-        back_to_list: 一覧へ戻る
-
     attributes:
       user:
         email: メールアドレス
@@ -25,6 +20,17 @@ ja:
         postal_code: 郵便番号
         address: 住所
         introduction: 自己紹介
+
+  users:
+    show:
+      title: ユーザー詳細
+      id: ID
+      back_to_list: 一覧へ戻る
+
+  common:
+    logged_in_as: ログイン中
+    edit_profile: プロフィール編集
+    logout: ログアウト
 
   date:
     abbr_day_names:

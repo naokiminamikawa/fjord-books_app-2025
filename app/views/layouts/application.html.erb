@@ -17,7 +17,6 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -33,22 +32,23 @@
 
     <p class="navbar-text float-right">
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
+        <%= t('common.logged_in_as') %>
+        <strong><%= current_user.email %></strong>.
 
-        <%= link_to "Edit profile",
+        <%= link_to t('common.edit_profile'),
                     edit_user_registration_path,
                     class: "navbar-link" %> |
 
-        <%= link_to "Logout",
+        <%= link_to t('common.logout'),
                     destroy_user_session_path,
                     data: { turbo_method: :delete },
                     class: "navbar-link" %>
       <% else %>
-        <%= link_to "Sign up",
+        <%= link_to t('common.sign_up'),
                     new_user_registration_path,
                     class: "navbar-link" %> |
 
-        <%= link_to "Login",
+        <%= link_to t('common.login'),
                     new_user_session_path,
                     class: "navbar-link" %>
       <% end %>
