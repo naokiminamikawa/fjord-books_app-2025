@@ -25,4 +25,8 @@
     <%= user.self_introduction %>
   </p>
 
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar %>
+  <% end %>
+
 </div>
