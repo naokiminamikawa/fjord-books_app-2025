@@ -25,8 +25,12 @@
     <%= user.self_introduction %>
   </p>
 
-  <% if user.avatar.attached? %>
-    <%= image_tag user.avatar %>
-  <% end %>
+  <p>
+    <% if user.avatar.attached? %>
+      <strong><%= User.human_attribute_name(:icon) %>:</strong>
+      <%= image_tag user.avatar.variant(resize_to_limit: [150, 150]).processed,
+          style: "display: block; margin-left: 0;" %>
+    <% end %>
+  </p>
 
 </div>
