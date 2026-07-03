@@ -4,6 +4,27 @@
   <%= render @book %>
 </div>
 
+<%= form_with model: [@book, Comment.new], local: true do |form| %>
+  <div class="field">
+    <%= form.label :body, "コメント" %><br>
+    <%= form.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= form.submit "コメントする" %>
+  </div>
+<% end %>
+
+<% @book.comments.each do |comment| %>
+  <div class="comment">
+    <p>
+      <strong><%= comment.user.email %>:</strong>
+      (<%= l comment.created_at, format: :short %>)
+      <%= button_to "コメント削除", [@book, comment],method: :delete, data: { confirm: "本当に削除しますか？" }, form: { style: "display: inline;" } %>
+    </p>
+    <p><%= simple_format(h(comment.body)) %></p>
+  </div>
+<% end %>
+
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

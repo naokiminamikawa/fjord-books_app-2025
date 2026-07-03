@@ -10,6 +10,27 @@
   <%= @report.body %>
 </p>
 
+<%= form_with model: [@report, Comment.new], local: true do |form| %>
+  <div class="field">
+    <%= form.label :body, "コメント" %><br>
+    <%= form.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= form.submit "コメントする" %>
+  </div>
+<% end %>
+
+<% @report.comments.each do |comment| %>
+  <div class="comment">
+    <p>
+      <strong><%= comment.user.email %>:</strong>
+      (<%= l comment.created_at, format: :short %>)
+      <%= button_to "コメント削除", [@report, comment],method: :delete, data: { confirm: "本当に削除しますか？" }, form: { style: "display: inline;" } %>
+    </p>
+    <p><%= simple_format(h(comment.body)) %></p>
+  </div>
+<% end %>
+
 <p>
   <%= link_to '一覧へ戻る', reports_path %>
 </p>
