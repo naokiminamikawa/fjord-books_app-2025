@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(index show)
   
-  resources :reports, only: %i(index show new create) do
+  resources :reports do
     resources :comments, only: %i(create destroy)
   end
 

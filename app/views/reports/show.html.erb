@@ -20,6 +20,8 @@
   </div>
 <% end %>
 
+<%= button_to "report削除", @report, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+
 <% @report.comments.each do |comment| %>
   <div class="comment">
     <p>
