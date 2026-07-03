@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
   
   resources :reports do
-    resources :comments, only: %i(create destroy)
+    resources :comments, only: %i[index show new create edit update destroy]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

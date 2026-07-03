@@ -31,6 +31,20 @@ class ReportsController < ApplicationController
     redirect_to reports_path, notice: 'reportを削除しました。'
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+  
+  def update
+    @report = Report.find(params[:id])
+
+    if @report.update(report_params)
+      redirect_to @report, notice: 'Report was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def report_params
