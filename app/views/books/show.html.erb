@@ -19,7 +19,10 @@
     <p>
       <strong><%= comment.user.email %>:</strong>
       (<%= l comment.created_at, format: :short %>)
-      <%= button_to "コメント削除", [@book, comment],method: :delete, data: { confirm: "本当に削除しますか？" }, form: { style: "display: inline;" } %>
+      
+      <% if comment.user == current_user %>
+        <%= button_to "コメント削除", [@book, comment],method: :delete, data: { confirm: "本当に削除しますか？" }, form: { style: "display: inline;" } %>
+      <% end %>
     </p>
     <p><%= simple_format(h(comment.body)) %></p>
   </div>
