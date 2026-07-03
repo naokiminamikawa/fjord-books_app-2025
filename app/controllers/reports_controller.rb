@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    @report.user = current_user
 
     if @report.save
       redirect_to @report, notice: 'Report was successfully created.'
@@ -29,7 +30,7 @@ class ReportsController < ApplicationController
 
     redirect_to reports_path, notice: 'reportを削除しました。'
   end
-  
+
   private
 
   def report_params
