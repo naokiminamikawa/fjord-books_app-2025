@@ -2,56 +2,35 @@
 
 <div>
   <label><%= t('.id') %></label><br>
-  <%= text_field_tag nil,
-                     @user.id,
-                     readonly: true,
-                     size: 80,
-                     autocomplete: 'off' %>
+  <p><%= @user.id %></p>
 </div>
 
 <br>
 
 <div>
   <label><%= User.human_attribute_name(:email) %></label><br>
-  <%= text_field_tag nil,
-                     @user.email,
-                     readonly: true,
-                     size: 80,
-                     autocomplete: 'off' %>
+  <p><%= @user.email %></p>
 </div>
 
 <br>
 
 <div>
   <label><%= User.human_attribute_name(:postal_code) %></label><br>
-  <%= text_field_tag nil,
-                     @user.postal_code,
-                     readonly: true,
-                     size: 80,
-                     autocomplete: 'off' %>
+  <p><%= @user.postal_code %></p>
 </div>
 
 <br>
 
 <div>
   <label><%= User.human_attribute_name(:address) %></label><br>
-  <%= text_field_tag nil,
-                     @user.address,
-                     readonly: true,
-                     size: 80,
-                     autocomplete: 'off' %>
+  <p><%= @user.address %></p>
 </div>
 
 <br>
 
 <div>
   <label><%= User.human_attribute_name(:introduction) %></label><br>
-  <%= text_area_tag nil,
-                    @user.introduction,
-                    readonly: true,
-                    rows: 10,
-                    cols: 80,
-                    autocomplete: 'off' %>
+  <p><%= @user.introduction %></p>
 </div>
 
 <br>
