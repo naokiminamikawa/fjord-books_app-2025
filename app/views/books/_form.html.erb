@@ -33,6 +33,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit(book.persisted? ? t('buttons.update') : t('buttons.create')) %>
   </div>
 <% end %>
