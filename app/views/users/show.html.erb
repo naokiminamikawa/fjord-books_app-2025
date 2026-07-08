@@ -1,0 +1,38 @@
+<h1><%= t('.title') %></h1>
+
+<div>
+  <label><%= t('.id') %></label><br>
+  <p><%= @user.id %></p>
+</div>
+
+<br>
+
+<div>
+  <label><%= User.human_attribute_name(:email) %></label><br>
+  <p><%= @user.email %></p>
+</div>
+
+<br>
+
+<div>
+  <label><%= User.human_attribute_name(:postal_code) %></label><br>
+  <p><%= @user.postal_code %></p>
+</div>
+
+<br>
+
+<div>
+  <label><%= User.human_attribute_name(:address) %></label><br>
+  <p><%= @user.address %></p>
+</div>
+
+<br>
+
+<div>
+  <label><%= User.human_attribute_name(:introduction) %></label><br>
+  <p><%= @user.introduction %></p>
+</div>
+
+<br>
+
+<%= link_to t('.back_to_list'), users_path %>
