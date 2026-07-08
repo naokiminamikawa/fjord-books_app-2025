@@ -1,34 +1,45 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 ja:
-  title: "タイトル"
-  memo: "メモ"
-  author: "著者"
-  picture: "写真"
+  activerecord:
+    models:
+      book: "本"
+
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "本文"
+        author: "著者"
+        picture: "写真"
+
+  books:
+    index:
+      title: "本の一覧"
+
+    new:
+      title: "新しい本"
+
+    edit:
+      title: "この本を編集"
+
+    show:
+      detail: "詳細"
+      edit: "この本を編集"
+      back: "本の一覧に戻る"
+      destroy: "この本を削除"
+
+  buttons:
+    file_attach: "ファイルを添付"
+    create: "本を作成"
+    update: "本を更新"
+
+  notifications:
+    create:
+      success: "本は正常に作成されました。"
+      failure: "本を作成できませんでした。"
+
+    update:
+      success: "本は正常に更新されました。"
+      failure: "本を更新できませんでした。"
+
+    destroy:
+      success: "本は正常に削除されました。"
+      failure: "本を削除できませんでした。"
