@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
@@ -28,10 +30,10 @@ class CommentsController < ApplicationController
   end
 
   def find_commentable
-    if params[:book_id]
-      Book.find(params[:book_id])
-    elsif params[:report_id]
-      Report.find(params[:report_id])
+    params.each do |name, value|
+      return Regexp.last_match(1).classify.constantize.find(value) if name =~ /(.+)_id$/
     end
+
+    nil
   end
 end
