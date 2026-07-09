@@ -1,0 +1,44 @@
+<h1>report詳細</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @report.body %>
+</p>
+
+<%= form_with model: [@report, Comment.new], local: true do |form| %>
+  <div class="field">
+    <%= form.label :body, "コメント" %><br>
+    <%= form.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= form.submit "コメントする" %>
+  </div>
+<% end %>
+
+<% if @report.user == current_user %>
+  <%= link_to "report編集", edit_report_path(@report) %>
+  <%= button_to "report削除", @report, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+<% end %>
+
+<% @report.comments.each do |comment| %>
+  <div class="comment">
+    <p>
+      <strong><%= comment.user.email %>:</strong>
+      (<%= l comment.created_at, format: :short %>)
+
+      <% if comment.user == current_user %>
+        <%= button_to "コメント削除", [@report, comment],method: :delete, data: { confirm: "本当に削除しますか？" }, form: { style: "display: inline;" } %>
+      <% end %>
+    </p>
+    <p><%= simple_format(h(comment.body)) %></p>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to '一覧へ戻る', reports_path %>
+</p>
