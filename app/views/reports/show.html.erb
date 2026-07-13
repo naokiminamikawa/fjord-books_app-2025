@@ -6,6 +6,16 @@
 
 <%= render 'application/comments', commentable: @report %>
 
+<h3>この記事は以下の記事から参照されています</h3>
+<ul>
+  <% @report.mentioning_reports.order(updated_at: :desc).each do |report| %>
+    <li>
+      <%= link_to report.title, report %>
+      （更新日: <%= l(report.updated_at, format: :short) %>）
+    </li>
+  <% end %>
+</ul>
+
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
