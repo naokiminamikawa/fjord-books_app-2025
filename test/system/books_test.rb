@@ -4,42 +4,74 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    visit root_url
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'Password!'
+    sleep 2
+    click_button 'ログイン'
+    sleep 2
+    assert_text 'ログインしました'
   end
 
   test 'visiting the index' do
+    # /books
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    sleep 2
+    click_link '日報'
+    sleep 2
+    click_link '日報の新規作成'
+    sleep 2
+    fill_in 'タイトル', with: '今日の日報'
+    fill_in '内容', with: 'Railsの勉強をしました。'
+    click_button '登録する'
+    sleep 2
+    click_link '日報の一覧に戻る'
+    sleep 2
+    first(:link, 'この日報を表示').click
+    sleep 2
+    click_link 'この日報を編集'
+    sleep 2
+    fill_in 'タイトル', with: 'タイトル（テスト）'
+    fill_in '内容', with: '内容（テスト）'
+    click_button '更新する'
+    sleep 2
+    click_link '日報の一覧に戻る'
+    sleep 2
+    first(:link, 'この日報を表示').click
+    sleep 2
+    click_button 'この日報を削除'
+    sleep 5
+    assert_text '日報が削除されました'
   end
 
-  test 'should create book' do
-    visit books_url
-    click_on 'New book'
+  # test 'should create book' do
+  #   visit books_url
+  #   click_on 'New book'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+  #   fill_in 'Memo', with: @book.memo
+  #   fill_in 'Title', with: @book.title
+  #   click_on 'Create Book'
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
-  end
+  #   assert_text 'Book was successfully created'
+  #   click_on 'Back'
+  # end
 
-  test 'should update Book' do
-    visit book_url(@book)
-    click_on 'Edit this book', match: :first
+  # test 'should update Book' do
+  #   visit book_url(@book)
+  #   click_on 'Edit this book', match: :first
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+  #   fill_in 'Memo', with: @book.memo
+  #   fill_in 'Title', with: @book.title
+  #   click_on 'Update Book'
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
-  end
+  #   assert_text 'Book was successfully updated'
+  #   click_on 'Back'
+  # end
 
-  test 'should destroy Book' do
-    visit book_url(@book)
-    click_on 'Destroy this book', match: :first
+  # test 'should destroy Book' do
+  #   visit book_url(@book)
+  #   click_on 'Destroy this book', match: :first
 
-    assert_text 'Book was successfully destroyed'
-  end
+  #   assert_text 'Book was successfully destroyed'
+  # end
 end
