@@ -12,35 +12,42 @@ class BooksTest < ApplicationSystemTestCase
     sleep 2
     assert_text 'ログインしました'
   end
-
   test 'can create, edit, and delete daily reports after login' do
-    # /books
     visit books_url
-    sleep 2
+
+    assert_link '日報'
     click_link '日報'
-    sleep 2
+
+    assert_link '日報の新規作成'
     click_link '日報の新規作成'
-    sleep 2
+
     fill_in 'タイトル', with: '今日の日報'
     fill_in '内容', with: 'Railsの勉強をしました。'
     click_button '登録する'
-    sleep 2
+
+    assert_text '日報が作成されました'
+
     click_link '日報の一覧に戻る'
-    sleep 2
+
+    assert_selector 'a', text: 'この日報を表示'
     first(:link, 'この日報を表示').click
-    sleep 2
+
+    assert_link 'この日報を編集'
     click_link 'この日報を編集'
-    sleep 2
+
     fill_in 'タイトル', with: 'タイトル（テスト）'
     fill_in '内容', with: '内容（テスト）'
     click_button '更新する'
-    sleep 2
+
+    assert_text '日報が更新されました'
+
     click_link '日報の一覧に戻る'
-    sleep 2
+
+    assert_selector 'a', text: 'この日報を表示'
     first(:link, 'この日報を表示').click
-    sleep 2
+
     click_button 'この日報を削除'
-    sleep 5
+
     assert_text '日報が削除されました'
   end
 
