@@ -13,7 +13,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_text 'ログインしました'
   end
 
-  test 'visiting the index' do
+  test 'can create, edit, and delete daily reports after login' do
     # /books
     visit books_url
     sleep 2
